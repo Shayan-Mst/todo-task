@@ -58,7 +58,9 @@ import Cards from '@/components/Cards'
             id={todo.id}
             title={todo.title}
             description={todo.description}
+            isDone={todo.isDone}
             setData = {setData}
+            isView={false}
           />
         ))
       }

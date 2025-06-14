@@ -25,7 +25,7 @@ export async function POST(req) {
   }
 
   const newTodo = {
-    id: crypto.randomUUID(), // ✅ Generate unique ID
+    id: crypto.randomUUID(),isDone : false , // ✅ Generate unique ID
     ...body,
   };
 
