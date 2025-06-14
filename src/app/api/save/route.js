@@ -15,18 +15,25 @@ export async function POST(req) {
   const body = await req.json();
 
   const currentData = JSON.parse(await readFile(filePath, 'utf-8'));
-  currentData.push(body); // اضافه کردن کار جدید
 
-  if(currentData.length > 5){
-     return new Response(
+  if (currentData.length >= 5) {
+    return new Response(
       JSON.stringify({ error: 'Exceed maximum todo add' }),
       { status: 400 }
     );
   }
+
+  const newTodo = {
+    id: crypto.randomUUID(), // ✅ Generate unique ID
+    ...body,
+  };
+
+  currentData.push(newTodo); // اضافه کردن کار جدید با شناسه
+
   await writeFile(filePath, JSON.stringify(currentData, null, 2));
 
   return new Response(JSON.stringify({ success: true }), {
     headers: { 'Content-Type': 'application/json' },
   });
-  
 }
+
