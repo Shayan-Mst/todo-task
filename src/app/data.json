@@ -1,8 +1,32 @@
 [
   {
-    "id": "57659e6e-830d-43d3-a14d-358d79f7b639",
+    "id": "1",
     "isDone": false,
-    "title": "hey",
-    "description": "before"
+    "title": "Buy groceries",
+    "description": "Milk, Bread, Eggs, and Fruits"
+  },
+  {
+    "id": "2",
+    "isDone": true,
+    "title": "Read book",
+    "description": "Finish reading 'Clean Code'"
+  },
+  {
+    "id": "3",
+    "isDone": false,
+    "title": "Workout",
+    "description": "30 minutes of cardio"
+  },
+  {
+    "id": "4",
+    "isDone": true,
+    "title": "Email client",
+    "description": "Send project update email"
+  },
+  {
+    "id": "5",
+    "isDone": true,
+    "title": "Fix bugs",
+    "description": "Resolve issues from bug tracker"
   }
 ]

@@ -2,6 +2,8 @@
 import Spinner from '@/components/Spinner'
 import React, { useEffect , useState } from 'react'
 import Cards from '@/components/Cards'
+import ButtonExport from '@/components/ButtonExport'
+import ButtonImport from '@/components/ButtonImport'
 
  const View = () => {
   const [data,setData] = useState()
@@ -50,7 +52,11 @@ import Cards from '@/components/Cards'
       {!loading &&
       <div>
 
-        <p className='text-[24px] my-8'> Undone Works </p>
+        <div className='flex gap-x-6 my-8'>
+        <p className='text-[24px] '> Undone Works </p>
+        <ButtonExport data={data}/>
+        <ButtonImport data={data} setData={setData}/>
+        </div>
 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
 
   
