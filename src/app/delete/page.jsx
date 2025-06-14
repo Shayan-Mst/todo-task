@@ -14,8 +14,6 @@ import Cards from '@/components/Cards'
 
     const fetchData = async() => {
 
-    
-     
         try{
        
           setLoading(true);
@@ -23,11 +21,12 @@ import Cards from '@/components/Cards'
           const response =  await fetch('/api/save',{method:'GET',headers:{'Content-Type':'application/json'}})
    
           const fetchedData = await response.json();
-       if(response.ok){ 
        
-        setData(fetchedData)
-        setLoading(false)
-        console.log(data)
+          if(response.ok){ 
+       
+             setData(fetchedData)
+             setLoading(false)
+            
       }
       }
     
@@ -44,22 +43,28 @@ import Cards from '@/components/Cards'
 
   return (
     <>
-     <div className="p-4">
-      <h1 className="text-xl font-bold mb-4">Delete Tasks</h1>
+     <div className="p-4 m-8">
+      <h1 className="text-xl font-bold mb-4 text-center">Delete Tasks</h1>
 
       {loading && <Spinner/>}
 
-      {data?.length === 0 && <p className='text-white'>No tasks found.</p>}
+      {data?.length === 0 && <p className='text-white text-center text-[32px]'>No tasks found...</p>}
 
       {!loading &&
-
-        data?.map((todo, index) => (
+<div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+       { data?.map((todo) => (
           <Cards
-           
+          key={todo.id}
+            id={todo.id}
             title={todo.title}
             description={todo.description}
+            setData = {setData}
           />
-        ))}
+        ))
+      }
+          </div>
+        }
+      
     </div>
     </>
   )

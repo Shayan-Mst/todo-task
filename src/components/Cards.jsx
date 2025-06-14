@@ -1,36 +1,47 @@
 import React from 'react'
 import Button from './Button'
+import toast from 'react-hot-toast'
 
-const Cards = ({title,description}) => {
+const Cards = ({id,title,description,setData}) => {
 
-    const deleteHandler = async() => {
+    const deleteHandler = async(id) => {
 
 
-  e.preventDefault();
-    const toastLoad = toast.loading('Applying new Todo...');
-    const response =  await fetch('/api/save',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(data)})
+  try{
+
+      const toastLoad = toast.loading('Applying delete...');
+    const response =  await fetch(`api/save/${id}`,{method:'DELETE',headers:{'Content-Type':'application/json'}})
   
-    console.log(response.status)
-    if(response.status==400){
-       toast.dismiss(toastLoad)
-       toast.error("Cant add more than 5 todo !");
-    }
+    
+   console.log(response)
 
     if(response.ok){
       toast.dismiss(toastLoad)
-       toast.success("successfuly created !");
+      toast.success("successfuly deleted !");
+      setData(prev => prev.filter((item, index) => item.id !== id));
     }
+  }
+
+  catch(error){
+ 
+       console.log(error)
+       toast.dismiss(toastLoad)
+       toast.error("Cant delete at the moment !");
+    
+
+  }
+  
     }
 
   return (
-   <div  className="bg-gray-900 min-h-screen p-6 text-white">
+   <div  className="bg-gray-900  p-6 text-white min-h-[250px] rounded-lg">
   <div className="max-w-md mx-auto">
-    <div className="bg-gray-800 rounded-2xl shadow-md p-6 flex justify-between items-start hover:bg-gray-700 transition">
-      <div>
-        <h3 className="text-xl font-semibold mb-2">{title}</h3>
-        <p className="text-sm text-gray-400">{description}</p>
+    <div className="bg-gray-800 h-full rounded-2xl shadow-md p-6  flex-row justify-between items-start hover:bg-gray-700 transition">
+      <div className='h-full mb-8'>
+        <h3 className="text-2xl font-semibold mb-2">{title}</h3>
+        <p className="text-md text-gray-400">{description}</p>
       </div>
-      <Button type="button" onClick={deleteHandler}  color='red' children="delete" ></Button>
+      <Button type="button" onClick={() => deleteHandler(id)}  color='red' children="delete" ></Button>
     </div>
   </div>
 </div>

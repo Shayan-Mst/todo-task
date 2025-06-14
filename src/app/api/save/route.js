@@ -1,7 +1,7 @@
 // app/api/todos/route.js
 import { writeFile, readFile } from 'fs/promises';
 import path from 'path';
-import { NextResponse } from 'next/server';
+
 
 const filePath = path.join(process.cwd(),'src/app', 'data.json');
 
@@ -42,20 +42,4 @@ export async function POST(req) {
 
 
 
-export async function DELETE(req, context) {
-  const id = context.params.id;
-
-  try {
-    const fileData = fs.readFileSync(filePath, 'utf-8');
-    const todos = JSON.parse(fileData);
-
-    const updatedTodos = todos.filter((todo, index) => index.toString() !== id);
-
-    fs.writeFileSync(filePath, JSON.stringify(updatedTodos, null, 2), 'utf-8');
-
-    return NextResponse.json({ success: true });
-  } catch (err) {
-    return NextResponse.json({ error: 'Failed to delete item' }, { status: 500 });
-  }
-}
 
