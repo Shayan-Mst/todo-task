@@ -15,12 +15,18 @@ import toast from 'react-hot-toast';
   const addHandler = async(e) => {
 
     e.preventDefault();
+    const toastLoad = toast.loading('Applying new Todo...');
     const response =  await fetch('/api/save',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(data)})
   
     console.log(response.status)
     if(response.status==400){
-      toast.dismiss()
+       toast.dismiss(toastLoad)
        toast.error("Cant add more than 5 todo !");
+    }
+
+    if(response.ok){
+      toast.dismiss(toastLoad)
+       toast.success("successfuly created !");
     }
 
   }
