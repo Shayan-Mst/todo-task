@@ -2,6 +2,7 @@
 import Spinner from '@/components/Spinner'
 import React, { useEffect , useState } from 'react'
 import Cards from '@/components/Cards'
+import Navbar from '@/components/Navbar'
 
  const Delete = () => {
 
@@ -43,6 +44,7 @@ import Cards from '@/components/Cards'
 
   return (
     <>
+    <Navbar/>
      <div className="p-4 m-8">
       <h1 className="text-xl font-bold mb-4 text-center">Delete Tasks</h1>
 

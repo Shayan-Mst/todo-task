@@ -4,6 +4,7 @@ import React, { useEffect , useState } from 'react'
 import Cards from '@/components/Cards'
 import ButtonExport from '@/components/ButtonExport'
 import ButtonImport from '@/components/ButtonImport'
+import Navbar from '@/components/Navbar'
 
  const View = () => {
   const [data,setData] = useState()
@@ -42,6 +43,8 @@ import ButtonImport from '@/components/ButtonImport'
     },[])
 
   return (
+    <>
+    <Navbar/>
      <div className="p-4 m-8">
       <h1 className="text-xl font-bold mb-4 text-center">View Tasks</h1>
 
@@ -93,6 +96,7 @@ import ButtonImport from '@/components/ButtonImport'
         }
       
     </div>
+    </>
   )
 }
 

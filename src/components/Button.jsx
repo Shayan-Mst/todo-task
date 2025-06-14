@@ -9,7 +9,7 @@ export default function Button({ children, color = 'blue',type,onClick }) {
                    'bg-blue-600 hover:bg-blue-700';
 
   return (
-    <button type={type} onClick={onClick}  className={`px-4 py-2 rounded-lg text-white font-semibold block text-center 
+    <button type={type} onClick={onClick}  className={`px-4 py-2 rounded-lg text-white font-semibold block text-center cursor-pointer 
     w-full max-w-xs mx-auto my-2 transition-colors ${colorClass}`}>
     {children}
   </button>
